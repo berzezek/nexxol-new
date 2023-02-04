@@ -1,0 +1,75 @@
+#TODO
+# Prepare
+1. Create template on figma
+
+## Backends
+1. Create models
+#- Category
+    - name
+    - description
+    - parent
+    - children
+    - image
+    - date_created
+    - date_updated
+
+#- Product
+    - name
+    - description
+    - price
+    - category (FK to Category)
+    - date_created
+    - date_updated
+    - is_active
+
+#- Image
+    - product (FK to Product)
+    - image
+    - date_created
+    - date_updated
+
+- Product_property
+    - product (FK to Product)
+    - name
+    - value
+    - date_created
+    - date_updated
+
+2. Create serializers
+3. Create views
+4. Create urls
+
+## Frontends
+1. Create components
+- Category
+    - CategoryList
+    - CategoryDetail
+    - CategoryCreate
+    - CategoryUpdate
+    - CategoryDelete
+- Product
+    - ProductList
+    - ProductDetail
+    - ProductCreate
+    - ProductUpdate
+    - ProductDelete
+- Image
+    - ImageList
+    - ImageDetail
+    - ImageCreate
+    - ImageUpdate
+    - ImageDelete
+- Product_property
+    - Product_propertyList
+    - Product_propertyDetail
+    - Product_propertyCreate
+    - Product_propertyUpdate
+    - Product_propertyDelete
+
+2. Create routes
+3. Create pages
+4. Create services
+5. Create store
+6. Create actions
+7. Create auth
+8. Create admin service
