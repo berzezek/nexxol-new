@@ -1,4 +1,4 @@
-from ..models import Category, Product, Image, ProductProperty
+from ..models import Category, Product, Image, CategoryProperty, ProductProperty
 from rest_framework import serializers
 
 
@@ -17,6 +17,12 @@ class ProductSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
+        fields = '__all__'
+
+
+class CategoryPropertySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CategoryProperty
         fields = '__all__'
 
 

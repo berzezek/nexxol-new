@@ -1,5 +1,5 @@
-from ..models import Category, Product, Image, ProductProperty
-from .serializers import CategorySerializer, ProductSerializer, ImageSerializer, ProductPropertySerializer
+from ..models import Category, Product, Image, CategoryProperty, ProductProperty
+from .serializers import CategorySerializer, ProductSerializer, ImageSerializer, CategoryPropertySerializer, ProductPropertySerializer
 from rest_framework import viewsets, permissions
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -17,6 +17,19 @@ class ProductViewSet(viewsets.ModelViewSet):
 class ImageViewSet(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Image.objects.all()
+        product_id = self.request.query_params.get('product_id', None)
+        if product_id is not None:
+            queryset = queryset.filter(product_id=product_id)
+        return queryset
+
+
+class CategoryPropertyViewSet(viewsets.ModelViewSet):
+    queryset = CategoryProperty.objects.all()
+    serializer_class = CategoryPropertySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
