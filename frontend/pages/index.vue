@@ -1,7 +1,7 @@
 <template>
   <HeroSection/>
   <MainPartner />
-  <MainContent/>
+  <MainContent />
 </template>
 
 <script>
