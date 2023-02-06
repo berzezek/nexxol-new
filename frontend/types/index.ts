@@ -25,4 +25,8 @@ export interface IImage {
   image: string;
   date_created: string;
   date_updated: string;
+
+export interface IUser {
+	username: string;
+	password: string;
 }

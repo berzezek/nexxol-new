@@ -1,4 +1,4 @@
-import { setAbsoluteSqliteDatabaseUrlForPrisma } from '../prisma/utils'
+import { setAbsoluteSqliteDatabaseUrlForPrisma } from "../prisma/utils";
 
 /**
  * Setup the database environment.
@@ -8,4 +8,4 @@ import { setAbsoluteSqliteDatabaseUrlForPrisma } from '../prisma/utils'
  * As soon as the user adds a `.env` file overwriting `DATABASE_URL` or export `DATABSE_URL` themselves we do not want to set the database url manually any longer.
  *
  */
-export const setup = () => setAbsoluteSqliteDatabaseUrlForPrisma()
+export const setup = () => setAbsoluteSqliteDatabaseUrlForPrisma();

@@ -1,15 +1,13 @@
 <template>
-  <HeroSection/>
-  <MainPartner />
-  <MainContent />
+	<HeroSection />
+	<MainPartner />
+	<MainContent />
 </template>
 
 <script>
 export default {
-  name: "index"
-}
+	name: "index",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

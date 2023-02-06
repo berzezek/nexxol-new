@@ -26,9 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
+    'djoser',
+    'rest_framework.authtoken',
 
     'store',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +106,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+
+
 USE_TZ = True
 
 
@@ -120,3 +124,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+
+

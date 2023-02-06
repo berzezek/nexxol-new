@@ -1,5 +1,5 @@
-import { execSync } from 'child_process'
-import { resolve } from 'path'
+import { execSync } from "child_process";
+import { resolve } from "path";
 
 /**
  * Helper to reset the database via a programmatic prisma invocation. Helpful to add to \`beforeEach\` or \`beforeAll\` of your testing setup.
@@ -11,13 +11,18 @@ import { resolve } from 'path'
  * @param databaseUrl Connection URL to database. Inferred from \`process.env.DATABASE_URL\` if not provided
  */
 export const resetDatabase = (databaseUrl?: string) => {
-  const url = databaseUrl || process.env.DATABASE_URL
-  if (!url) {
-    throw new Error('Cannot reset database - connection string could not be inferred.')
-  }
+	const url = databaseUrl || process.env.DATABASE_URL;
+	if (!url) {
+		throw new Error(
+			"Cannot reset database - connection string could not be inferred."
+		);
+	}
 
-  execSync(`cd ${process.cwd()} && DATABASE_URL=${url} npx prisma db push --force-reset`, { stdio: 'inherit' })
-}
+	execSync(
+		`cd ${process.cwd()} && DATABASE_URL=${url} npx prisma db push --force-reset`,
+		{ stdio: "inherit" }
+	);
+};
 
 /**
  * Takes a path to a file, makes it absolute and then sets the `DATABASE_URL` environment variable to a value of the form `file:/path/to/db.sqlite`.
@@ -27,13 +32,16 @@ export const resetDatabase = (databaseUrl?: string) => {
  * @param pathToSqliteFile string The location of the `db.sqlite` file. E.g.: `./db.sqlite` or `db.sqlite` or `/Users/test/nuxtprisma/db.sqlite`
  * @param environmentVariableName string Name of the environment variable to export the `file:/...` database url to, this is the name that prisma uses in the `schema.prisma` `env(...)` directive
  */
-export function setAbsoluteSqliteDatabaseUrlForPrisma (pathToSqliteFile: string = resolve('./db.sqlite'), environmentVariableName = 'DATABASE_URL') {
-  if (process.env.DATABASE_URL) {
-    // User or nuxt set their own `DATABASE_URL`, do not overwrite it
-    return
-  }
+export function setAbsoluteSqliteDatabaseUrlForPrisma(
+	pathToSqliteFile: string = resolve("./db.sqlite"),
+	environmentVariableName = "DATABASE_URL"
+) {
+	if (process.env.DATABASE_URL) {
+		// User or nuxt set their own `DATABASE_URL`, do not overwrite it
+		return;
+	}
 
-  // We need to resolve again in case a relative path was passed
-  const absoluteDbPath = `file:${resolve(pathToSqliteFile)}`
-  process.env[environmentVariableName] = absoluteDbPath
+	// We need to resolve again in case a relative path was passed
+	const absoluteDbPath = `file:${resolve(pathToSqliteFile)}`;
+	process.env[environmentVariableName] = absoluteDbPath;
 }
